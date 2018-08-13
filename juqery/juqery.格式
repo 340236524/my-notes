@@ -1,0 +1,20 @@
+
+
+
+
+<p>
+网站名称: <span id="jname"></span><br /> 
+网站地址: <span id="jurl"></span><br /> 
+网站 slogan: <span id="jslogan"></span><br /> 
+</p>
+
+
+var JSONObject= {
+    "name":"菜鸟教程",                                    
+    "url":"www.runoob.com", 
+    "slogan":"学的不仅是技术，更是梦想！"
+};
+
+document.getElementById("jname").innerHTML=JSONObject.name              网站名称：菜鸟教程      
+document.getElementById("jurl").innerHTML=JSONObject.url                网站地址：www.runoob.com
+document.getElementById("jslogan").innerHTML=JSONObject.slogan          网站：学的不仅是技术，更是梦想！

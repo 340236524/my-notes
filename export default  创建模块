@@ -1,0 +1,64 @@
+
+新建模块
+
+export default {
+    // 方法1
+    checkLogin(){
+        var token = window.localStorage.getItem('user_token');
+        return token ?  true : false ;  // 三元运算
+    }
+
+    // 方法2
+    getToken(){
+        var token = window.localStorage.getItem('user_token');
+
+        return token ?  token : null ;  // 三元运算
+    }
+
+}
+
+    return token ?  true : false ;  // 三元运算
+    if(token){
+        return true
+    } else {
+        return fales
+    }
+
+
+
+//  模块引入
+import xxx from '/文件/文件js'     //  xxx代表名称
+
+
+
+// 点击购买
+  $('buy-btn').on('click',function () {
+
+    // 商品id，数量，userid
+    var num= 10;
+    var goodId=1;
+
+    // var token =  util.getToken();      util引入模块的名称     // 获取token
+    var token =  localStorage.getItem('user_token');            // 获取token
+
+    // 判断真假 ， 只要是 ''，null,undefined,0,就是假        !token 不存在的token  !代表不存在的意思
+    if(!token){
+      alert('需要登录');
+      window.location.herf = '';
+      return;
+    }
+    var str = 'token='+ token;         // 拼接 token 
+    $.ajax({
+      method:'POST',
+      data:{num:num,goodId},
+      headers:{
+        authxxxxx: 'token='+ token,         // 或者 authxxxxx: str
+      },
+      success:function (resp) {
+        console.log(resp)
+      }
+      
+    })
+
+
+  })

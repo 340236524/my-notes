@@ -1,0 +1,5 @@
+
+// input文本框 鼠标点击默认值消失,不输入离开鼠标恢复默认值
+<input type="text" value="点击添入标题" onfocus="if (value =='点击添入标题'){value =''}"onblur="if (value ==''){value='点击添入标题'}"/>
+onfocus 选中input执行js
+onblur  离开input执行js

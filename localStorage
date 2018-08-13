@@ -1,0 +1,5 @@
+
+// localStorage相当全局变量 
+
+localStorage.setItem('xxx', mytoken);  // 储存 变量   名称:xxx    值:mytoken
+localStorage.getItem('xxx');   // 获取 变量
