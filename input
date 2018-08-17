@@ -3,3 +3,46 @@
 <input type="text" value="点击添入标题" onfocus="if (value =='点击添入标题'){value =''}"onblur="if (value ==''){value='点击添入标题'}"/>
 onfocus 选中input执行js
 onblur  离开input执行js
+
+
+outline 设置选中边框
+
+
+
+
+    /* 复选框伪元素 */
+    <style>
+        #myCheck+label {
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid #d3d3d3;
+            width: 80px;
+            height: 20px;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 20px;
+        }
+
+        #myCheck:checked+label {
+            background-color: #eee;
+        }
+
+        #myCheck:checked+label:after {
+            content: "\2714";
+        }
+        input{display: none;}
+    </style>
+
+    <div>
+        <input type="checkbox" id="myCheck">
+        <label for="myCheck">国产</label>
+    </div>
+
+/* 单选 */
+$(function(){
+    $('#test').find('input[type=checkbox]').bind('click', function(){
+        $('#test').find('input[type=checkbox]').not(this).attr("checked", false);
+    });
+});
+
