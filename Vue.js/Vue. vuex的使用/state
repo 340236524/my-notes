@@ -1,4 +1,4 @@
-“store”基本上就是一个容器，它包含着你的应用中大部分的状态 (state)
+“store”基本上就是一个容器，它包含着你的应用中大部分的状态 (state) ，不能直接改变 store 中的状态 所以就用到了mutations
 
 1.首先在 vue 项目里 安装 vuex      npm install vuex
 

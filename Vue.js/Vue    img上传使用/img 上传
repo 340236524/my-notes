@@ -1,6 +1,6 @@
 <form action="" id="formdata">
     <ul id="imgUl">
-        <div class="el-upload--picture-card" @click="addPci">
+        <div class="el-upload--picture-card" @click="addPci">     // 添加图片按钮
             <i class="el-icon-plus"></i>
         </div>
         <li class="imgLiBox" v-for="(item,index) in fileItem">    //图片展示
@@ -21,13 +21,16 @@ export defaule{
         }
     },
     methods:{
+        addPci() {
+            document.getElementById('add_pic').click()
+        },
         handkeFileChange() {
-                var files = [];
-                var picUpload = document.getElementById('add_pic').files;
-                console.log(picUpload)
-                var file = picUpload[0],
-                    url = URL.createObjectURL(file);            //  图片预览
-                this.fileItem.push({ img: url });
+            var files = [];
+            var picUpload = document.getElementById('add_pic').files;
+            console.log(picUpload)
+            var file = picUpload[0],
+                url = URL.createObjectURL(file);            //  图片预览
+            this.fileItem.push({ img: url });
         }
     }
 }
