@@ -1,10 +1,8 @@
 
-
-
 $.ajax({
-        type: "POST", //用POST方式传输
-        dataType: "text", //数据格式:JSON
-        url: 'https://dingdong.linkeddb.com/api/registered/send_code/', //目标地址
+        type: "POST",                                                       //用POST方式传输
+        dataType: "JSON",                                                   //数据格式:JSON
+        url: 'https://dingdong.linkeddb.com/api/registered/send_code/',     //目标地址
         data: {
             phone:phone
             },

@@ -17,7 +17,8 @@ export default {
 
 }
 
-    return token ?  true : false ;  // 三元运算
+    return token ?  true : false ;  // 三元运算  
+    等于 === 下面
     if(token){
         return true
     } else {

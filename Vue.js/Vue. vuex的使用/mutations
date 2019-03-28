@@ -1,0 +1,18 @@
+不能直接改变 store 中的状态 所以就用到了 mutations
+1. const store = new Vuex.Store({
+            state:{  
+               count：0
+            },
+            mutations: {
+                increment(state) {
+                    state.count++
+                }
+            }
+        });
+
+2. 函数中直接使用  store.commit('increment')   也可以传参 store.commit('increment',xxxx)      /* xxx 代表参数 */
+                                                                  mutations: {
+                                                                      increment (state, xxx) {
+                                                                          state.count += xxx
+                                                                      }
+                                                                  }

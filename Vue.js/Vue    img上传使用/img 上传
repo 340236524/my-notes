@@ -1,0 +1,34 @@
+<form action="" id="formdata">
+    <ul id="imgUl">
+        <div class="el-upload--picture-card" @click="addPci">
+            <i class="el-icon-plus"></i>
+        </div>
+        <li class="imgLiBox" v-for="(item,index) in fileItem">    //图片展示
+            <div class="imgBox">
+                <img :src="item.img" alt="" class="upload_img">
+                <span class="el-icon-delete" @click="handleRemove(index)"></span>
+            </div>
+        </li>
+    </ul>
+</form>
+<input type="file" multiple class="hide" id="add_pic" @change="handkeFileChange">
+
+<script>
+export defaule{
+    data(){
+        return{
+            fileItem: []   
+        }
+    },
+    methods:{
+        handkeFileChange() {
+                var files = [];
+                var picUpload = document.getElementById('add_pic').files;
+                console.log(picUpload)
+                var file = picUpload[0],
+                    url = URL.createObjectURL(file);            //  图片预览
+                this.fileItem.push({ img: url });
+        }
+    }
+}
+</script>
