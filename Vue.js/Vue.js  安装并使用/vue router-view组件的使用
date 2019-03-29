@@ -1,0 +1,85 @@
+
+这是一个侧边栏组件 也说明了 router-view的使用         // * 代表 router-view 使用不能缺少的松溪
+<template>
+    <div>
+        <el-row class="tac">
+            <el-col :span="12">
+                <!-- <h5>自定义颜色</h5> -->
+                <el-menu default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64"
+                    text-color="#fff" active-text-color="#ffd04b">
+                    <router-link to="/TRB_operation/add_shopp">        // *<router-link to="/TRB_operation/add_shopp">  to ="xxx"   xxx 组件的地址
+                        <el-menu-item index="1">
+                            <i class="el-icon-location"></i>
+                            <span slot="title">添加商品</span>
+                        </el-menu-item>
+                    </router-link>                                    // *</router-link>  从开始到闭合 是一个点击事件 点击后切换组件的路由 从而实现选项卡的功能
+                    <router-link to="/TRB_operation/modify_shopp">
+                        <el-menu-item index="2">
+                            <i class="el-icon-menu"></i>
+                            <span slot="title">修改商品</span>
+                        </el-menu-item>
+                    </router-link>
+                    <router-link to="/TRB_operation/TRB_management">
+                        <el-menu-item index="3">
+                            <i class="el-icon-setting"></i>
+                            <span slot="title">账号管理</span>
+                        </el-menu-item>
+                    </router-link>
+                    <router-link to="/TRB_operation/add_account">
+                        <el-menu-item index="4">
+                            <i class="el-icon-document"></i>
+                            <span slot="title">添加用户</span>
+                        </el-menu-item>
+                    </router-link>
+                </el-menu>
+            </el-col>
+        </el-row>
+        <div style="width: 88%; float: right">
+            <router-view></router-view>                                // *<router-view></router-view>  组件显示的位置
+        </div> 
+    </div>
+</template>
+
+<script>
+    export default {
+        methods: {
+            handleOpen(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            handleClose(key, keyPath) {
+                console.log(key, keyPath);
+            },
+        }
+    }
+</script>
+
+
+router-view的使用需要在  router下面  index.js 写路由配置
+{
+    path: '/TRB_operation',
+    name: 'TRB_operation',
+    component: TRB_operation,
+    redirect: '/TRB_operation/add_shopp',               // *redirect 初始页面的地址
+    children: [                                         // *children 子页面地址
+        {
+            path: '/TRB_operation/add_account',
+            name: 'add_account',
+            component: add_account,  
+        },
+        {
+            path: '/TRB_operation/TRB_management',
+            name: 'TRB_management',
+            component: TRB_management,
+        },
+        {
+            path: '/TRB_operation/add_shopp',
+            name: 'add_shopp',
+            component: add_shopp,
+        },
+        {
+            path: '/TRB_operation/modify_shopp',
+            name: 'modify_shopp',
+            component: modify_shopp,
+        }
+    ]
+},

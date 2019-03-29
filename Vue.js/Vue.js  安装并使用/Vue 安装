@@ -1,0 +1,26 @@
+1. # 查看版本   
+npm -v   
+
+2. # 最新稳定版         
+npm install vue
+
+3. # 全局安装 vue-cli 
+npm install --global vue-cli
+
+4. # 创建一个基于 webpack 模板的新项目     //  xxx  新建项目的名字
+vue init webpack xxxx
+
+5. # 这里需要进行一些配置，默认回车即可    
+? Project name my-project
+? Project description A Vue.js project
+? Author runoob <test@runoob.com>
+? Vue build standalone
+? Use ESLint to lint your code? Yes     // 此处是代码格式规范 容易报错 选否即可
+? Pick an ESLint preset Standard
+? Setup unit tests with Karma + Mocha? Yes
+? Setup e2e tests with Nightwatch? Yes
+
+6. # 进入项目 安装 并开始项目      // xxx 项目的名字    
+cd xxx         // 进入项目
+npm install    // 安装
+npm run dev    // 启动项目

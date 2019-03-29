@@ -23,12 +23,12 @@
         };
         
 3.接下来，在 main.js里面引入store，然后再全局注入一下，这样一来就可以在任何一个组件里面使用this.$store了：
-        import store from './store'   //引入store
+        import store from './store'   // *引入store
         
         new Vue({
             el: '#app',
             router,
-            store,   //使用store
+            store,              // *使用store
             template: '<App/>',
             components: { App }
         })

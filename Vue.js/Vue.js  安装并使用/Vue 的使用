@@ -1,0 +1,39 @@
+1.目录结构
+build
+config                   *配置项
+node-modules    
+src                      *放置一些静态页面的资源  一般前端的代码就是在里面完成的   
+static                   *放置一些js的文件 
+test    
+ .babelrc    
+ .editorconfig    
+ .gitignore    
+ .postcssrc    
+ index.html              *主页面 所有组件最后后会在index.html展示 
+ package-lock.json    
+ package.json    
+ README.md
+
+2.目录结构子级文件及使用
+(1) config 下面 index.js 可以修改 host: 0.0.0.0     可以用手机访问页面 需要加 电脑ip 
+电脑ip 可以通过cmd  ipconfig 命令查看ip地址   
+访问地址    http://192.168.99.63:8080/#/TRB_operation/modify_shopp   
+                  192.168.99.63 是电脑ip地址  :8080是端口 port    
+
+(2) src 放置静态页面的资源  src下面有 5 个子级文件 
+    assets              *放置图片
+    components          *页面代码写在这里
+    router              *路由 
+    App.vue             *组件会先到这里
+    main.js             *根配置项 一些引用资源放在这里 可以全局使用
+src router index.js  新添加的页面 都要在这里配置路由 页面可以当成组件使用          
+首先需要引入组件   import  xxx from 'xxx'   import xxx 代表组件名字   from 'xxx' 组件来源的位置
+然后需要 填写 访问地址
+{
+    path: '/',
+    name: 'NavMenu',
+    component: NavMenu
+}
+path 访问地址   name 组件名字  component 声明组件
+
+(3) static
