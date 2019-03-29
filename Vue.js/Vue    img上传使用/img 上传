@@ -11,7 +11,7 @@
         </li>
     </ul>
 </form>
-<input type="file" multiple class="hide" id="add_pic" @change="handkeFileChange">
+<input type="file" multiple class="hide" id="add_pic" @change="handkeFileChange">       // @change   input改变出发该事件
 
 <script>
 export defaule{
@@ -22,7 +22,7 @@ export defaule{
     },
     methods:{
         addPci() {
-            document.getElementById('add_pic').click()
+            document.getElementById('add_pic').click()      // 点击添加图片按钮 触发input事件
         },
         handkeFileChange() {
             var files = [];
@@ -31,7 +31,12 @@ export defaule{
             var file = picUpload[0],
                 url = URL.createObjectURL(file);            //  图片预览
             this.fileItem.push({ img: url });
+        },
+        handleRemove(index){
+            this.fileItem.splice(index,1);      // 删除当前的图片
         }
     }
 }
 </script>
+
+当前只完成预览模式  上传还未完成  后续再补充

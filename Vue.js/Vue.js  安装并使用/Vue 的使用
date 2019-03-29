@@ -36,4 +36,11 @@ src router index.js  新添加的页面 都要在这里配置路由 页面可以
 }
 path 访问地址   name 组件名字  component 声明组件
 
-(3) static
+(3) static 放置js文件  
+<li v-for="(item,index) in isBook" @click="isBrief(index)">
+    <img :src="item.img" alt=""> 
+</li>
+isBook:[
+    {img:'../../../static/1@2x.png'}
+]
+如果想要在 <img :src="item.img" alt=""> 使用data数据中的img图片地址 需要在 src下面的assets 和 static 里面都放置图片
