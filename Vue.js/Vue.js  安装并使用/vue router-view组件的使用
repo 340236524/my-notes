@@ -1,5 +1,5 @@
 
-这是一个侧边栏组件 也说明了 router-view的使用         // * 代表 router-view 使用不能缺少的松溪
+这是一个侧边栏组件 也说明了 router-view的使用         // * 代表 router-view 使用不能缺少的东西
 <template>
     <div>
         <el-row class="tac">

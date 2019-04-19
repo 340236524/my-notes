@@ -1,0 +1,19 @@
+vue设置动态title 需要用到vue-wechat-title
+1.安装 vue-wechat-title 
+  npm install vue-wechat-title;
+
+2.在 在main.js中引入
+　Vue.use(require('vue-wechat-title'));
+
+3.在App.vue 里添加
+ <router-view v-wechat-title="$route.meta.title"/>
+
+ 4.路由需要配置 在router  下面index.js添加  
+    {
+      path: '/follow_read',
+      name: 'follow_read',
+      component: follow_read,
+      meta: {                        //动态title 
+        title: '今日阅读'
+      }
+    }

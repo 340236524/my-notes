@@ -1,0 +1,21 @@
+vue 
+this.$router.push({
+          name: 'statistic',        //* name代表跳转的网页 
+           params: {
+             id: item               // item代表传书数据 item 可以是字符串、对象或者数组
+           }
+        });
+
+在目标网页 可以使用 this.$route.params.id 获取传输的数据    
+
+可以传多个参数
+this.$router.push({
+          name: 'statistic',        //* name代表跳转的网页 
+           params: {
+             id: item,              // item代表传书数据 item 可以是字符串、对象或者数组
+             code: '999'            
+           }
+        });
+
+使用 this.$route.params.id  获取   params下的id 也就是item
+使用 this.$route.params.id  code   params下的code 也就是 999

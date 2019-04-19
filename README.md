@@ -8,4 +8,4 @@ var isCanClick = ture;
 $('#button').on('click',function(){
     if(!isCanClick) return;
     isCanClick = false;
-})
+}) 

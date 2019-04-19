@@ -1,0 +1,60 @@
+get请求
+axios.get('/user?ID=12345')
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+// Optionally the request above could also be done as
+axios.get('/user', {
+    params: {
+      ID: 12345
+    }
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+  post请求
+  axios.post('/user', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+axios(config)
+// 发起一个POST请求
+axios({
+  method: 'post',
+  url: '/user/12345',
+  data: {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  }
+});
+  .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+// 获取远程图片
+axios({
+  method:'get',
+  url:'http://bit.ly/2mTM3nY',
+  responseType:'stream'
+})
+  .then(function(response) {
+  response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
+});

@@ -1,0 +1,3 @@
+首先在项目里面安装 axios    npm install axios 
+
+然后在使用的组件里面引入axios   import axios from 'axios';
