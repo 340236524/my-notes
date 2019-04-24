@@ -1,4 +1,4 @@
-vue 
+路由传参会跳转网页 在绑定的事件中写
 this.$router.push({
           name: 'statistic',        //* name代表跳转的网页 
            params: {
@@ -6,7 +6,7 @@ this.$router.push({
            }
         });
 
-在目标网页 可以使用 this.$route.params.id 获取传输的数据    
+在跳转后的网页 可以使用 this.$route.params.id 获取传输的数据    
 
 可以传多个参数
 this.$router.push({

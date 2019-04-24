@@ -4,17 +4,23 @@ v-if=""                   if条件语句
 v-for="item in array"     for循环  
 v-model=""                配合input使用
 v-on:click=""             点击事件
-@touchstart   长按事件
+@touchstart   长按事件 当手指触摸屏幕时候触发，即使已经有一个手指放在屏幕上也会触发
 @touchmove事件：当手指在屏幕上滑动的时候连续地触发。在这个事件发生期间，调用preventDefault()事件可以阻止滚动。
-@touchend     长按结束事件
+@touchend     长按结束事件 当手指从屏幕上离开的时候触发。
 
 
 Vue 操控Dom     使用ref标注唯一
 <div class="content_warf_item" ref="main">
 使用 this.$refs.main获取元素     修改元素的src this.$refs.audio.src    修改元素的class this.$refs.audio.className
 
-父组件给子组件传参 
+v-bind 绑定    v-bind:src=""   简写为 ：src=""   <a v-bind:href="url">...</a>  缩写 <a :href="url">...</a>
+v-bind 可以 父组件给子组件传参  
 v-bind:xxx="array"   xxx代表所传参数起的名字   array所传参数 的数组
+
+prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()
+v-on:submit.prevent="onSubmit"  
+<a v-on:click="doSomething">...</a>  缩写 <a @click="doSomething">...</a>
+
 
 
 #

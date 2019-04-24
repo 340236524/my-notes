@@ -1,0 +1,42 @@
+watch 侦听器   侦听已经定义的数据
+可以配合 input使用 
+
+例如
+<input type="text" v-model="firstName">
+
+data(){
+      return{
+        firstName: 'Foo',
+        lastName: 'Bar',
+        fullName: 'Foo Bar'
+      }
+    }，
+    watch：{
+        firstName(val){
+            this.fullName = this.firstName + ' ' + val; 
+        },
+        lastName(val){
+            this.fullName =  val + ' ' + this.lastName; 
+        }
+    }
+watch 侦听已经定义的数据   当定义的 firstName 改变时 会触发 wacth里面的firstName函数
+                                  lastName  改变时 会触发 wacth里面的lastName函数
+
+拓展知识
+计算属性 computed 和 侦听器 watch 的区别
+
+<input type="text" v-model="firstName">
+
+data(){
+        return{
+        firstName: 'Foo',
+        lastName: 'Bar',
+        }
+    },
+    computed: {
+        fullName: function () {
+        return this.firstName + ' ' + this.lastName
+        }
+    }
+computed 计算属性  对比上面的watch 侦听器 效果是一样的 但区别时 计算属性是创建一个新的 数据(fullName)，
+当 firstName或者lastName改变时 fullName会跟着改变

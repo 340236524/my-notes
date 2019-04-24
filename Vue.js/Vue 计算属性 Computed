@@ -1,0 +1,87 @@
+<template>
+  <div>
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ isreversedMessage }}"</p>
+  </div>
+</template>
+
+<script>
+  export default {
+    data(){
+      return{
+        message:'hello world'
+      }
+    },
+    computed:{
+      // 计算属性的 getter
+      isreversedMessage(){
+        return this.message.split('').reverse().join('')
+      }
+    }
+  }
+</script>
+
+结果：
+
+Original message: "Hello"
+
+Computed reversed message: "olleH"             
+
+{{message}} 和计算属性 {{isreversedMessage}}  可以分开始使用 
+
+isreversedMessage 依赖于 message 因此修改message isreversedMessage 会跟着改变 
+
+这里我们声明了一个计算属性 isreversedMessage。我们提供的函数将用作属性 vm.reversedMessage 的 getter 函数：
+
+
+拓展知识 计算属性缓存  
+
+<template>
+  <div>
+    <p>Computed reversed message: "{{ isreversedMessage }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage() }}</p>
+  </div>
+</template>
+
+<script>
+  export default {
+    data(){
+      return{
+        message:'hello world'
+      }
+    },
+    computed:{
+      // 计算属性的 getter
+      isreversedMessage(){
+        return this.message.split('').reverse().join('')
+      }
+    },
+    methods:{
+       reversedMessage(){
+        return this.message.split('').reverse().join('')
+       } 
+    }
+  }
+</script>
+计算属性 
+isreversedMessage 依赖于 message 只有当 message 改变时 isreversedMessage 才会改变
+reversedMessage() 没有任何依赖 当页面重新渲染时  reversedMessage()会直接改变
+
+例如
+computed:{
+    data(){
+      return{
+        message:'hello world'
+      }
+    },
+      // 计算属性的 getter
+      isreversedMessage(){
+        return Date.now()
+      }
+    },
+    methods:{
+       reversedMessage(){
+        return Date.now()
+       } 
+    }
+当刷新页面 或者 触发函数重新渲染页面时，reversedMessage() 会改变，而 isreversedMessage 不会改变
