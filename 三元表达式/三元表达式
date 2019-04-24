@@ -1,0 +1,14 @@
+三元表达式
+
+oBth.onclick=function(){
+    oUl.style.display == "block" ? oUl.style.display="none" : oUl.style.display="block"
+}
+上述代码和下面代码的意思相同
+
+oBth.onclick=function(){
+        if (oUl.style.display=='block') {
+            oUl.style.display=='none';
+        }else{
+            oUl.style.display=='block';
+        }
+    }
