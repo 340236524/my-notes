@@ -1,6 +1,7 @@
 // {{ message }}
 v-bind:title="message"
-v-if=""                   if条件语句
+v-if=""                   if条件语句      可以这样写 <h1 v-if="awesome">Vue is awesome!</h1>
+vi-else                                             <h1 v-else>Oh no 😢</h1>
 v-for="item in array"     for循环  
 v-model=""                配合input使用
 v-on:click=""             点击事件
@@ -21,7 +22,19 @@ prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefa
 v-on:submit.prevent="onSubmit"  
 <a v-on:click="doSomething">...</a>  缩写 <a @click="doSomething">...</a>
 
-
+v-if="" 条件语句也可以这样写
+<div v-if="type === 'A'">
+  A
+</div>
+<div v-else-if="type === 'B'">
+  B
+</div>
+<div v-else-if="type === 'C'">
+  C
+</div>
+<div v-else>
+  Not A/B/C
+</div>
 
 #
 
