@@ -21,6 +21,7 @@ data(){
     }
 watch 侦听已经定义的数据   当定义的 firstName 改变时 会触发 wacth里面的firstName函数
                                   lastName  改变时 会触发 wacth里面的lastName函数
+watch firstName函数可以写事件 当触发firstName 可以触发firstName里面的函数
 
 拓展知识
 计算属性 computed 和 侦听器 watch 的区别
