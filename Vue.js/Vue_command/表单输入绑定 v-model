@@ -1,0 +1,65 @@
+v-model 配合 <input>输入框，<textarea>多行文本输入，<select>选项标签使用
+
+复选框绑定   checkbox 多选框  radio单选框
+<input type="checkbox" id="checkbox" v-model="checked">
+<label for="checkbox">{{ checked }}</label>
+当data 下面checked为布尔值时  {{ checked }}输出为 布尔值
+
+<div id='example-3'>
+  <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+  <label for="jack">Jack</label>
+  <input type="checkbox" id="john" value="John" v-model="checkedNames">
+  <label for="john">John</label>
+  <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+  <label for="mike">Mike</label>
+  <br>
+  <span>Checked names: {{ checkedNames }}</span>
+</div>
+当data 下面checkedNames为数组为时  {{ checkedNames }}输出为 选中的value值
+
+单选按钮
+<div id="example-4">
+  <input type="radio" id="one" value="One" v-model="picked">
+  <label for="one">One</label>
+  <br>
+  <input type="radio" id="two" value="Two" v-model="picked">
+  <label for="two">Two</label>
+  <br>
+  <span>Picked: {{ picked }}</span>
+</div>
+当data 下面picked为''时  {{ picked }}输出为 选中的value值
+
+选择框
+<div id="example-5">
+  <select v-model="selected">
+    <option disabled value="">请选择</option>
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+  </select>
+  <span>Selected: {{ selected }}</span>
+</div>
+data下面的 selected需要为''  {{ selected }}输出为 选择的的值  
+注意：<option disabled value="">请选择</option>  不写vlaue时 初始渲染时选择框里面不显示任何内容
+
+用 v-for 渲染的动态选项
+<select v-model="selected">
+  <option v-for="item in options" v-bind:value="item.value">
+    {{ option.text }}
+  </option>
+</select>
+<span>Selected: {{ selected }}</span>
+
+data(){
+        return{
+            checked:true,
+            checkedNames:[],
+            picked:'',
+            selected:''，
+            options: [
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' }
+            ]
+        }
+    },
