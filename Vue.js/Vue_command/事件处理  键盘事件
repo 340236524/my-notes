@@ -1,0 +1,74 @@
+v-on:click=""  可以简写成@click
+
+访问原始的 DOM 事件  用特殊变量 $event 把它传入方法
+
+<button v-on:click="warn('Form cannot be submitted yet.', $event)">
+  Submit
+</button>
+
+methods: {
+  warn: function (message, event) {
+    // 现在我们可以访问原生事件对象
+    if (event) event.preventDefault()
+    alert(message)
+  }
+}
+
+<!-- 阻止单击事件继续传播 -->
+<a v-on:click.stop="doThis"></a>
+
+<!-- 提交事件不再重载页面 -->
+<form v-on:submit.prevent="onSubmit"></form>
+
+<!-- 修饰符可以串联 -->
+<a v-on:click.stop.prevent="doThat"></a>
+
+<!-- 只有修饰符 -->
+<form v-on:submit.prevent></form>
+
+<!-- 添加事件监听器时使用事件捕获模式 -->
+<!-- 即元素自身触发的事件先在此处理，然后才交由内部元素进行处理 -->
+<div v-on:click.capture="doThis">...</div>
+
+<!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+<!-- 即事件不是从内部元素触发的 -->
+<div v-on:click.self="doThat">...</div>
+
+<a v-on:click.once="doThis"></a>
+
+v-on:click.prevent.self 会阻止所有的点击，
+v-on:click.self.prevent 只会阻止对元素自身的点击。
+
+监听键盘事件  
+<input v-on:keyup.enter="submit">
+按键码   
+<input @keyup.13="submit">
+.enter  (捕获“回车”健)
+.tab    
+.delete (捕获“删除”和“退格”键)
+.esc    
+.space  
+.up     
+.down   
+.left   
+.right  
+.ctrl
+.alt
+.shift
+.meta
+
+可以设置组合键
+<input @keyup.ctrl.13="submit">
+
+注意：在 Mac 系统键盘上，meta 对应 command 键 (⌘)。在 Windows 系统键盘 meta 对应 Windows 徽标键 (⊞)。在 Sun 操作系统键盘上，meta 对应实心宝石键 (◆)。
+在其他特定键盘上，尤其在 MIT 和 Lisp 机器的键盘、以及其后继产品，比如 Knight 键盘、space-cadet 键盘，meta 被标记为“META”。在 Symbolics 键盘上，meta 被标记为“META”或者“Meta”。
+
+.exact 修饰符    // 注意click是点击  keyup是按键
+
+<button @click.ctrl="onClick">A</button>
+
+<!-- 有且只有 Ctrl 被按下的时候才触发 -->
+<button @click.ctrl.exact="onCtrlClick">A</button>   
+
+<!-- 没有任何系统修饰符被按下的时候才触发 -->
+<button @keyup.exact="onClick">A</button>
