@@ -41,6 +41,7 @@ v-model 配合 <input>输入框，<textarea>多行文本输入，<select>选项�
 </div>
 data下面的 selected需要为''  {{ selected }}输出为 选择的的值  
 注意：<option disabled value="">请选择</option>  不写vlaue时 初始渲染时选择框里面不显示任何内容
+disabled是禁用此项的意思  select特有的属性
 
 用 v-for 渲染的动态选项
 <select v-model="selected">
