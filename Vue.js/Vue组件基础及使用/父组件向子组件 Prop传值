@@ -1,0 +1,37 @@
+组件是可复用的 Vue 实例，且带有一个名字
+在main.js文件里面创建组件     父组件向子组件传值
+例子  // 创建名字为 <button-counter>的组件
+Vue.component('button-counter', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: '<button @click="count++">You clicked me {{ count }} times.</button>'
+})
+通过 <button-counter></button-counter> 可以直接使用上述组件
+
+组件可以通过 Prop 传值
+例子  //创建名为 <blog-post>的组件
+Vue.component("blog-post",{
+  props:['post'],                                   //绑定的 :post 传进来一个对象        
+  template:`<div class="blog-post">               
+               <h1>{{post.title}}</h1>              //post现在就代表传进来的对象    
+               <div v-html="post.content"></div>
+               <button @click="isClick">点击触发事件</button>
+            </div>`,
+  methods:{
+    isClick(){
+      console.log(123)
+    }
+  }
+});
++-----------------------------------------------------------------------------
+
+组件也可以使用for循环  
+<blog-post v-for="item in posts" v-bind:key="item.id" :post="item"></blog-post> //绑定的 :post 传进来一个对象 
+posts: [
+    { id: 1, title: 'My journey with Vue' },
+    { id: 2, title: 'Blogging with Vue' },
+    { id: 3, title: 'Why Vue is so fun' }
+]

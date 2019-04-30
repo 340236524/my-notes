@@ -1,0 +1,68 @@
+子组件
+<template>
+
+　　<div class="train-city">
+
+　　　　<h3>父组件传给子组件的toCity:{{ sendData}}</h3>
+
+　　　　<br/>
+
+　　　　<button @click='select('大连')'> 点击此处将 大连 发射给父组件 </button>
+
+　　</div>
+
+</template>
+
+<script>
+
+　　export default{
+
+　　　　name:'trainCity',
+
+　　　　props:['sendData'],   //用来接收父组件传给子组件的数据
+
+　　　　methods:{
+
+　　　　　　select(val){
+
+　　　　　　let data={
+
+　　　　　　　　cityname:val
+
+　　　　　　};
+
+　　　　　　this.$emit('showCityName',data); //select 事件触发后，自动触发showCityName事件  data代表对象 {cityname:'大连'}
+                //showCityName代表事件 data代表事件传入的参数        
+　　　　    }
+
+　　　　}
+
+　　}
+注释：点击button时，会触发select事件，'大连'会传入 val， select 事件触发后，自动触发showCityName事件
+父组件绑定 showCityName事件就可以接收子组件传入的参数 
+            data代表事件传入的参数 
+
+<template>
+　　<div>父组件的toCity{{toCity}}</div>
+    <TrainCity @showCityName="updateCity" :sendData='toCity'></TrainCity>
+<template>
+
+<script>
+　　import TrainCity from "./train-city";
+　　export default {
+　　　　name:'index',
+　　　　components: {TrainCity},
+　　　　data () {
+　　　　　　return {
+　　　　　　　　toCity:"北京"
+　　　　　　}
+　　　　},
+　　　　methods:{
+　　　　　　updateCity(data){   //触发子组件城市选择-选择城市的事件 
+　　　　　　this.toCity = data.cityname;    //改变了父组件的值
+　　　　　　console.log('toCity:'+this.toCity)
+　　　　　　}
+　　　　}
+　　}
+</script>   
+子组件点击select时 触发父组件绑定showCityName的updateCity事件 data代表 子组件传入的参数
