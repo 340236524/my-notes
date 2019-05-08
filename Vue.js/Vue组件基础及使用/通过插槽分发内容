@@ -1,0 +1,19 @@
+向组件内 传递内容
+
+组件包裹的内容不会传递 可以使用<slot></slot>插槽来传递
+<alert-box>
+  Something bad happened.
+</alert-box>
+
+<slot></slot> 插槽
+
+Vue.component('alert-box', {
+  template: `
+    <div class="demo-alert-box">
+      <strong>Error!</strong>
+      <slot></slot>
+    </div>
+  `
+})
+
+输出为  Error!Something bad happened.

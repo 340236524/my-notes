@@ -56,7 +56,7 @@ data(){
             checked:true,
             checkedNames:[],
             picked:'',
-            selected:''，
+            selected:'',
             options: [
                 { text: 'One', value: 'A' },
                 { text: 'Two', value: 'B' },

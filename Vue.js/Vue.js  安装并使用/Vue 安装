@@ -22,5 +22,5 @@ vue init webpack xxxx
 
 6. # 进入项目 安装 并开始项目      // xxx 项目的名字    
 cd xxx         // 进入项目
-npm install    // 安装
+npm install    // 安装 依赖包
 npm run dev    // 启动项目

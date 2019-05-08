@@ -53,12 +53,12 @@ isreversedMessage 依赖于 message 因此修改message isreversedMessage 会跟
     computed:{
       // 计算属性的 getter
       isreversedMessage(){
-        return this.message.split('').reverse().join('')
+        return this.message.split('').reverse().join('')          // * return 要配合 计算函数 使用
       }
     },
     methods:{
        reversedMessage(){
-        return this.message.split('').reverse().join('')
+        return this.message.split('').reverse().join('')          // * return 要配合 计算函数 使用
        } 
     }
   }

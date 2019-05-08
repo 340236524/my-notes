@@ -1,5 +1,6 @@
 1.通过 npm 在项目上安装 ECharts
-npm install echarts --save
+ npm install echarts --save
+
 2.在js里面引入
 var echarts = require('echarts');
 
