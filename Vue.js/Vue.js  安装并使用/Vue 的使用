@@ -34,6 +34,14 @@ src router index.js  新添加的页面 都要在这里配置路由 页面可以
     name: 'NavMenu',
     component: NavMenu
 }
+
+或者直接在路径里引入组件来源
+{
+    path: '/',
+    name: 'HelloWorld',
+    component: () => import('@/components/HelloWorld')
+}
+
 path 访问地址   name 组件名字  component 声明组件
 
 (3) static 放置js文件  

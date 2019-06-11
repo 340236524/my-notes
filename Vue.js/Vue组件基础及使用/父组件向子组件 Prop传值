@@ -14,7 +14,7 @@ Vue.component('button-counter', {
 组件可以通过 Prop 传值
 例子  //创建名为 <blog-post>的组件
 Vue.component("blog-post",{
-  props:['post'],                                   //绑定的 :post 传进来一个对象        
+  props:['post'],                                   //绑定的 :post 传进来一个对象      :post="item"   
   template:`<div class="blog-post">               
                <h1>{{post.title}}</h1>              //post现在就代表传进来的对象    
                <div v-html="post.content"></div>
@@ -25,9 +25,11 @@ Vue.component("blog-post",{
       console.log(123)
     }
   }
-});
-+-----------------------------------------------------------------------------
-
+});                
+                                    配上面上使用                
+                                        |
+                                        |
+                                        ↓                                        
 组件也可以使用for循环  
 <blog-post v-for="item in posts" v-bind:key="item.id" :post="item"></blog-post> //绑定的 :post 传进来一个对象 
 posts: [

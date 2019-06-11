@@ -1,0 +1,7 @@
+http://layer.layui.com/      web弹层组件    
+
+使用方法：
+1.需要引入juqery        <script src="jQuery的路径"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+2.引入layer             <script src="layer.js的路径"></script>
+
+
