@@ -4,3 +4,21 @@ style：静态的样式统一写到 class 中。style 接收动态的样式，�
 <view style="color:{{color}};" />
 class：用于指定样式规则，其属性值是样式规则中类选择器名(样式类名)的集合，样式类名不需要带上.，样式类名之间用空格分隔。
 <view class="normal_view" />
+
+微信节点查询  var query = wx.createSelectorQuery() //创建节点查询器 query
+
+    query.select('#the-id').boundingClientRect()    //这段代码的意思是选择Id=the-id的节点，获取节点位置信息的查询请求
+    query.selectViewport().scrollOffset()   //这段代码的意思是获取页面滑动位置的查询请求
+    query.exec(function(res){
+      res[0].top            // #the-id节点的上边界坐标
+      res[1].scrollTop      // 显示区域的竖直滚动位置
+    })
+    真正的实例用法
+    wx.createSelectorQuery().select('.npl-intro').boundingClientRect(function (rect) {
+        console.log(rect[0].height)
+        console.log(rect[0].width)
+    }).exec()
+    wx.createSelectorQuery().selectAll('.npl-intro').boundingClientRect(function (rect) {
+        console.log(rect[0].height)
+        console.log(rect[0].width)
+    }).exec()  
