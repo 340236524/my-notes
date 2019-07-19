@@ -24,3 +24,4 @@ vue init webpack xxxx
 cd xxx         // 进入项目
 npm install    // 安装 依赖包
 npm run dev    // 启动项目
+npm run build  // 打包项目

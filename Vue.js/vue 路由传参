@@ -18,4 +18,4 @@ this.$router.push({
         });
 
 使用 this.$route.params.id  获取   params下的id 也就是item
-使用 this.$route.params.id  code   params下的code 也就是 999
+使用 this.$route.params.code  code   params下的code 也就是 999
