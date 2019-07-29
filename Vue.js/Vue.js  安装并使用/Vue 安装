@@ -25,3 +25,21 @@ cd xxx         // 进入项目
 npm install    // 安装 依赖包
 npm run dev    // 启动项目
 npm run build  // 打包项目
+
+安装less 
+npm install less less-loader --save-dev
+
+接下来找到bulid目录下的webpack.base.conf.js并打开，找到module下的rules写下
+module: {
+        rules: [
+            {
+                test: /\.less$/,
+                loader: "style-loader!css-loader!less-loader"
+            }
+        ]
+    },
+{
+    test: /\.less$/,
+    loader: "style-loader!css-loader!less-loader"
+}
+style标签里面写上lang="less"表示以less语法解析css
