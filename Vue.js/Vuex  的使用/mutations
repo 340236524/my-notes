@@ -4,15 +4,23 @@
                count：0
             },
             mutations: {
-                increment(state) {
-                    state.count++
+                increment(state,index) {
+                    state.count = index
                 }
             }
         });
 
-2. 函数中直接使用  store.commit('increment')   也可以传参 store.commit('increment',xxxx)      /* xxx 代表参数 */
-                                                                  mutations: {
-                                                                      increment (state, xxx) {
-                                                                          state.count += xxx
-                                                                      }
-                                                                  }
+2. 函数中直接使用  this.$store.commit('increment')  
+
+注释： vuex increment函数的使用
+也可以传参 this.$store.commit('increment',xxxx)      /* xxx 代表参数 */
+    mutations: {
+        increment (state, xxx) {
+            state.count += xxx
+        }
+    }
+    methods:{
+        click(index){
+            this.$store.commit('increment',index)
+        }
+    }

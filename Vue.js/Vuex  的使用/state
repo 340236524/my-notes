@@ -13,7 +13,7 @@
             }
         });
         
-        export default store;
+        export default store;      // 导出 store
         或者
         const store = new Vuex.Store({
             state
