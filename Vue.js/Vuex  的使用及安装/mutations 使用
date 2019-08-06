@@ -10,7 +10,8 @@
             }
         });
 
-2. 函数中直接使用  this.$store.commit('increment')  
+2. 可以在点击事件 函数中直接使用  this.$store.commit('increment')  
+this.$store.commit('increment') 代表  increment(state,index) 函数
 
 注释： vuex increment函数的使用
 也可以传参 this.$store.commit('increment',xxxx)      /* xxx 代表参数 */
