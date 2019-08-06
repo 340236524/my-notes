@@ -24,7 +24,7 @@
         }
     }
 </script>
-
+注释：
 <child :message="message"></child>  绑定数据message传给子组件  完整格式 v-bind::message="message" 
 
 子组件
@@ -51,7 +51,7 @@
         }
     }
 </script>
-
+注释：
 子组件接收完数据 message 可以直接使用     <p>{{ message }}</p>
 子组件可以使用 message 也可以给数据赋值
 
