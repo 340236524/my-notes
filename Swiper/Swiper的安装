@@ -1,0 +1,42 @@
+Swiper 安装命令 
+npm install vue-awesome-swiper --save
+
+在main.js里面引入
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+Vue.use(VueAwesomeSwiper)
+
+在需要用到Swiper的页面 引入
+import 'swiper/dist/css/swiper.css'
+
+
+Swiper的使用
+<template>
+  <swiper :options="swiperOption">              // Swiper的api  参考api使用 设置轮播时间自动播放等功能
+    <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">I'm Slide {{ slide }}</swiper-slide>
+    <div class="swiper-pagination" slot="pagination"></div>
+  </swiper>
+</template>
+
+<script>
+  export default {
+    name: 'xxx',
+    data() {
+      return {                                                           
+        swiperOption: {                                                 // Swiper的api  参考api使用 设置轮播时间自动播放等功能
+          pagination: {                                                  
+            el: '.swiper-pagination'
+          }
+        },
+        swiperSlides: [1, 2, 3, 4, 5]                                   //  循环的数据 Swiper的展示 
+      }
+    },
+    mounted() {
+      setInterval(() => {                               // 模拟异步数据
+        console.log('simulate async data')              // 模拟异步数据
+        if (this.swiperSlides.length < 10) {
+          this.swiperSlides.push(this.swiperSlides.length + 1)
+        }
+      }, 3000)
+    }
+  }
+</script>
