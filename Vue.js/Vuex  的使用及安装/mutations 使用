@@ -13,15 +13,21 @@
 2. 可以在点击事件 函数中直接使用  this.$store.commit('increment')  
 this.$store.commit('increment') 代表  increment(state,index) 函数
 
+
 注释： vuex increment函数的使用
-也可以传参 this.$store.commit('increment',xxxx)      /* xxx 代表参数 */
-    mutations: {
-        increment (state, xxx) {
-            state.count += xxx
-        }
-    }
+
+在需要改变数据的页面 
+可以携带参数 this.$store.commit('increment',xxxx)      /* xxx 代表参数 */
     methods:{
         click(index){
             this.$store.commit('increment',index)
         }
     }
+    在vuex  mutations控制函数并接收参数
+    mutations: {
+        increment (state, xxx) {
+            state.count += xxx
+        }
+    }
+
+在需要获取数据的页面使用 this.$store.state   console.log(this.$store.state)
