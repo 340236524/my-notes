@@ -16,6 +16,16 @@ this.$router.push({
              code: '999'            
            }
         });
-
 使用 this.$route.params.id  获取   params下的id 也就是item
 使用 this.$route.params.code  code   params下的code 也就是 999
+
+使用query 传参 参数将会在url后面出现 页面刷新参数不会丢失
+this.$router.push({
+        name: 'statistic',        //* name代表跳转的网页 
+          query: {
+            id: item,              // item代表传书数据 item 可以是字符串、对象或者数组
+            code: '999'            
+          }
+      });
+使用 this.$route.query.id  获取   params下的id 也就是item
+使用 this.$route.query.code  code   params下的code 也就是 999
