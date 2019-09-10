@@ -1,0 +1,102 @@
+1.创建一个组件
+例如
+iconfont
+    |
+    |——iconfont.css
+    |——iconfont.vue
+
+
+fonticon.vue
+
+<template>
+	<view class="icon" :class="['icon-'+ type]" :style="{color:color,'font-size':fontSize}" @click="onClick()"></view>       // @click="onClick()" 暂时没用到 父子通信可能用到
+</template>
+
+<script>
+	export default {
+		props: {
+			type:"",
+			color: "",
+			size: {
+				type: [Number, String],
+				default: 24
+			}
+		},
+		onLoad() {
+			
+		},
+		computed:{
+			fontSize() {
+				let size = Number(this.size)
+				size = isNaN(size) ? 24 : size
+				return `${size}upx`
+			}
+		},
+		methods: {
+			onClick(){
+				this.$emit("click")
+			}
+		}
+	}
+</script>
+
+<style>
+	@import url("./iconfont.css");
+</style>
+
+
+iconfont.css  引入的是 阿里图库 iconfont
+
+@font-face {
+  font-family: 'iconfont';  /* project id 1403158 */
+  src: url('//at.alicdn.com/t/font_1403158_syb459is2zp.eot');
+  src: url('//at.alicdn.com/t/font_1403158_syb459is2zp.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1403158_syb459is2zp.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1403158_syb459is2zp.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1403158_syb459is2zp.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1403158_syb459is2zp.svg#iconfont') format('svg');
+}
+
+.icon {
+    font-family: iconfont;
+    font-size: 48upx;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.icon.uni-active {
+    color: #007aff;
+}
+.icon-sousuo:before {
+  content: "\e60e";
+}
+.icon-chenggong:before {
+  content: "\e68c";
+}
+
+2.使用方法
+在使用页面引入组件   
+import mIcon from "../../static/iconfont/iconfont.vue";
+声明组件
+components:{
+    mIcon,topTab
+}
+<mIcon class="search" type="sousuo" size="40" color="#bebebe" @click="onSearch()"></mIcon>      <!--文字图标 -->
+
+3.引入文字图标库的方法
+(1)进入 阿里图库官网 https://www.iconfont.cn 选择所需的图标
+(2)添加入库 购物车的小图标
+(3)阿里图标管理 进入 我的项目  点击查看在线链接 将代码复制入  iconfont.css  
+(4)点击下载至本地 解压压缩包 打开解压文件 将 iconfont.css 里面的
+
+.icon-chenggong:before {
+  content: "\e68c";
+}
+
+.icon-sousuo:before {
+  content: "\e60e";
+}
+复制入自己创建的 iconfont.css   步骤1可以看到   压缩包 iconfont.css 文件里面没有 https协议 所以不能全部复制
+(5) 每次有新的图标添加 就需要重复 步骤3
