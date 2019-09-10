@@ -1,0 +1,83 @@
+router index.js   路由的配置
+{
+    path: '/BottomTab',
+    name: 'BottomTab',
+    component: () => import('@/components/BottomTab'),
+    redirect: '/index',      // 底部默认显示页
+    children:[
+        {
+            path: '/index',
+            name: 'index',
+            component: () => import('@/pages/index'),
+            meta: {
+                title: 'E间云店'  
+            },
+        },
+        {
+            path: '/welfare',
+            name: 'welfare',
+            meta:{
+                title: "福利",
+            },
+            component: () => import('@/my/welfare'),
+        },
+        {
+            path: '/myindex',
+            name: 'myindex',
+            component: () => import('@/my/index'),
+            meta:{
+                title: "我的",
+            },
+        }
+    ]
+},
+
+底部切换页面的代码
+
+<template>
+    <div class="BottomTab-up">
+        <div>
+            <transition name="slide-fade" mode="out-in">
+                <router-view></router-view>
+            </transition>
+        </div>
+        <div class="BottomTab">
+            <div v-for="(item,index) in isBottomTab" class="BottomTab-item" @click="clickTab(index,item.name)">
+                <router-link :to="item.link" :class="{ 'active': item.name == isSelect }">
+                    <span>
+                        <i :class="item.icon"></i>
+                    </span>
+                    <span>{{item.title}}</span>
+                </router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name:"BottomTab",
+    data(){
+        return{
+        isSelect:"index",
+        isBottomTab:[
+            {icon:"discount",title:"今日优惠",link: '/index',name: 'index'},
+            {icon:"welfare",title:"福利",link: '/welfare',name: 'welfare'},
+            {icon:"optimization",title:"优选",link: '/businessList',name: 'businessList'},
+            {icon:"investment",title:"招商",link: '/investment',name: 'investment'},
+            {icon:"my",title:"我的",link: '/myindex',name: 'myindex'}
+        ],
+        curId:'0'
+        }
+    },
+    methods:{
+        clickTab(index,name){
+            console.log(name);
+            this.isSelect = name;
+        }
+    },
+    mounted(){
+        this.isSelect = this.$route.name   // 获取路由的name
+    }
+}
+</script>
