@@ -1,0 +1,44 @@
+http://www.animate.net.cn/  官网
+
+第一步. 引入animate.css文件
+也可以使用http://www.bootcdn.cn/animate.css/的服务
+<head>
+  <link rel="stylesheet" href="animate.min.css">
+</head>
+
+第二步. 给指定的元素加上指定的动画样式名
+第一个animated是必须添加的样式名，第二个是指定的动画样式名。
+ <div class="animated fadeInUp"></div>
+
+ 其他的补充说明
+采用jquery可以不修改现有代码，动态添加动画
+
+ 1.如果说想给某个元素动态添加动画样式，可以通过jquery来实现：
+$('#yourElement').addClass('animated bounceOutLeft');
+
+
+2.当动画效果执行完成后还可以通过以下代码添加事件
+$('#yourElement').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', doSomething);
+
+
+3.你也可以通过 JavaScript 或 jQuery 给元素添加这些 class，比如：
+$(function(){
+    $('#yourElement').addClass('animated bounce');
+});
+
+
+4.有些动画效果最后会让元素不可见，比如淡出、向左滑动等等，可能你又需要将 class 删除，比如：
+$(function(){
+    $('#yourElement').addClass('animated bounce');
+    setTimeout(function(){
+        $('#yourElement').removeClass('bounce');
+    }, 1000);
+});
+
+
+5.animate.css 的默认设置也许有些时候并不是我们想要的，所以你可以重新设置，比如：
+#yourElement{
+    animate-duration: 2s;    //动画持续时间
+    animate-delay: 1s;    //动画延迟时间
+    animate-iteration-count: 2;    //动画执行次数
+}
