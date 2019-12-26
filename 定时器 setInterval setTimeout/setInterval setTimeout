@@ -1,0 +1,12 @@
+let clear = setInterval(() => {
+    console.log("每秒执行一次")
+},1000) 
+clearInterval(clear) 停止
+
+setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数
+
+
+延时3秒执行
+setTimeout(()=>{ 
+    console.log("延时3秒执行")
+}, 3000);

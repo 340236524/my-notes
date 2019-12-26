@@ -10,10 +10,10 @@ http://www.animate.net.cn/  官网
 第一个animated是必须添加的样式名，第二个是指定的动画样式名。
  <div class="animated fadeInUp"></div>
 
- 其他的补充说明
+其他的补充说明
 采用jquery可以不修改现有代码，动态添加动画
 
- 1.如果说想给某个元素动态添加动画样式，可以通过jquery来实现：
+1.如果说想给某个元素动态添加动画样式，可以通过jquery来实现：
 $('#yourElement').addClass('animated bounceOutLeft');
 
 
