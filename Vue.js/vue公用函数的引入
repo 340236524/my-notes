@@ -1,0 +1,32 @@
+1. 在src目录下创建 文件夹  例如 获取url参数  utils ————
+                                                  |——index.js
+
+index.js
+
+function getUrlKey(name) {
+    return (
+      decodeURIComponent(
+        (new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(
+          location.href
+        ) || [, ''])[1].replace(/\+/g, '%20')
+      ) || null
+    );
+  }
+  
+  export default {
+    getUrlKey,
+  };
+  
+2.全局引入  utils -- index.js   在 main.js 引入
+  
+import utils from './urlGet'; // 获取url参数的方法
+Vue.prototype.$utils = utils;
+
+
+3.使用
+
+http://yyt.huayaoyaoye.com/diaochawenjuan.html?state=123
+
+let state = this.$utils.getUrlKey('state');
+获取url参数 state
+state = 123
