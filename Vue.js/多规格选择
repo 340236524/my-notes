@@ -1,0 +1,71 @@
+1.html
+<div class="twt" v-for="(item,index) in problem">
+    <p><img src="images/r8.png"><span>{{item.title_name}}</span></p>
+    <div class="daan">
+        <p v-for="(cItem,cIndex) in item.key" v-show="cItem" @click="onChoice(index,cItem,cIndex,item)" v-if="item.checked == '1'">
+            <span :class="subIndex[index] == cIndex?'seled':'noSeled'"></span><span>{{cItem}}</span>
+        </p>
+        <p v-for="(cItem,cIndex) in item.key" v-show="cItem" @click="onLongChoice(index,cItem,cIndex,item)" v-if="item.checked == '2'">
+            <span :class="cItem.boolean?'noSeled':'seled'"></span><span>{{cItem.name}}</span>
+            <!-- <span :class="{seled:cItem.boolean}"></span><span>{{cItem.name}}</span> -->
+        </p>
+        <!-- <p><input class="radio_type" type="radio" name="type" id="radio2" /><span>1-2</span></p>
+        <p><input class="radio_type" type="radio" name="type" id="radio2" /><span>11-12</span></p> -->
+    </div>
+</div>
+
+2.js
+return {
+    answer: [],
+    subIndex: [],
+    LongChoice: []
+}
+
+ // 单选 
+onChoice(index, cItem, cIndex, item) {
+    // console.log(item)
+    this.answer[index] = {
+        k_id: item.title_id,
+        key: cIndex
+    };
+    console.log(this.answer);
+    this.subIndex[index] = cIndex;           // 根据subIndex数组的键值 勾选对应的选项
+    console.log(this.subIndex[index]);
+    // console.log(cItem);
+    this.$forceUpdate();                    // 强制重新渲染
+},
+// 多选
+onLongChoice(index, cItem, cIndex, item) {
+    // console.log(cIndex)
+    cItem.boolean = !cItem.boolean;
+    // console.log(cItem.boolean)
+    if (cItem.boolean == false) {
+        this.LongChoice.push(cItem.key);
+    } else {
+        this.LongChoice.splice(this.remove(this.LongChoice, cItem.key), 1);
+    }
+    // 多选生成的字符串 key 传给后端
+    var key = '';
+    for (var i = 0; i < this.LongChoice.length; i++) {
+        key += this.LongChoice[i] + ",";
+    }
+    key = key.substring(0, key.length - 1);
+    console.log(key);
+    // 把key赋值给数组 answer 
+    this.answer[index] = {
+        k_id: item.title_id,
+        key: key
+    };
+    console.log(this.answer);
+    this.$forceUpdate();
+},
+// 按照值 删除数组中对应的数组
+remove(arr, value) {
+    var i = arr.length;
+    while (i--) {
+        if (arr[i] === value) {
+            return i;
+        }
+    }
+    return;
+}
