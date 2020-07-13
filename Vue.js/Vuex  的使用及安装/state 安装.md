@@ -9,18 +9,26 @@
 
         const store = new Vuex.Store({
             state:{  
-                /* 这里面写数据内容 */
+                count：0    /* 这里面写数据内容 */
             }
         });
         
         export default store;      // 导出 store
         或者
-        const store = new Vuex.Store({
-            state
-        });
         const state={ 
             /* 这里面写数据内容 */
         };
+
+        const mutations = {
+            increment(state,index) {
+                state.count = index
+            }
+        }
+
+        const store = new Vuex.Store({
+            state,
+            mutations
+        });
         
 3.接下来，在 main.js里面引入store，然后再全局注入一下，这样一来就可以在任何一个组件里面使用this.$store了：
         import store from './store'   // *引入store

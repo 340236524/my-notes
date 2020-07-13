@@ -1,5 +1,5 @@
 不能直接改变 store 中的状态 所以就用到了 mutations
-1. const store = new Vuex.Store({
+1.(1)   const store = new Vuex.Store({
             state:{  
                count：0
             },
@@ -8,6 +8,21 @@
                     state.count = index
                 }
             }
+        });
+
+1.(2)   const state={ 
+            /* 这里面写数据内容 */
+        };
+
+        const mutations = {
+            increment(state,index) {
+                state.count = index
+            }
+        }
+
+        const store = new Vuex.Store({
+            state,
+            mutations
         });
 
 2. 可以在点击事件 函数中直接使用  this.$store.commit('increment')  
