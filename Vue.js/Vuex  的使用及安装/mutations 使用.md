@@ -1,4 +1,5 @@
 不能直接改变 store 中的状态 所以就用到了 mutations
+
 1.(1)   const store = new Vuex.Store({
             state:{  
                count：0
