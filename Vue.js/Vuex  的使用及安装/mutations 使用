@@ -11,8 +11,8 @@
             }
         });
 
-1.(2)   const state={ 
-            /* 这里面写数据内容 */
+1.(2)   const state = { 
+            count:'0' /* 这里面写数据内容 */
         };
 
         const mutations = {
