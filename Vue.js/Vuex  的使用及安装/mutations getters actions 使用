@@ -81,11 +81,17 @@ Action 函数接受一个与 store 实例具有相同方法和属性的 context 
 注释： vuex increment函数的使用
 
 在需要改变数据的页面 
-可以携带参数 this.$store.commit('increment',xxxx)      /* xxx 代表参数 */
+可以携带参数 this.$store.commit('increment',xxxx)         /* xxx 代表参数 */
     methods:{
         click(index){
-            this.$store.commit('increment',index)
+            this.$store.commit('increment',index)        /* mutation 触发 increment 函数 */
+
+            this.$store.dispatch('incrementAsync')       /* actions 触发 incrementAsync 函数*/
+            console.log(this.$store.state)
         }
+    },
+    created(){
+        console.log(this.$store.getters.getTodoById(2))  /* getters 触发 getTodoById 函数  2 代表参数 */
     }
     在vuex  mutations控制函数并接收参数
     mutations: {
