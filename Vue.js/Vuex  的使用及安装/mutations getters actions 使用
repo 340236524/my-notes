@@ -1,4 +1,5 @@
 不能直接改变 store 中的状态 所以就用到了 mutations
+getters 对列表进行过滤并计数
 
 1.(1)   const store = new Vuex.Store({
             state:{  
@@ -8,16 +9,27 @@
                 increment(state,index) {
                     state.count = index
                 }
+                demo(state,index) {
+                    state.count ++
+                }
             },
             getters:{
                 getTodoById: (state) => (id) => {
                     return state.todos.find(todo => todo.id === id)
                 }
+            },
+            actions: {
+                incrementAsync ({ commit }) {
+                    commit('demo')
+                    setTimeout(() => {
+                        commit('demo')
+                    }, 1000)
+                }
             }
         });
 
         find 和 filter 的区别    find返回的是对象 {}   filter返回的是数组 []
-        
+
 1.(2)   const state = { 
             count:'0' /* 这里面写数据内容 */
         };
@@ -25,6 +37,9 @@
         const mutations = {
             increment(state,index) {
                 state.count = index
+            },
+            demo(state){
+                state.count++
             }
         }
         
@@ -34,16 +49,34 @@
             }
         }
 
+        const actions = {
+            increment (context) {
+                context.commit('increment')
+            },
+            incrementAsync ({ commit }) {
+                commit('demo')
+                setTimeout(() => {
+                    commit('demo')
+                }, 1000)
+            }
+        }
+
         const store = new Vuex.Store({
             state,
             mutations,
-            getters
+            getters,
+            actions
         });
 
-2. 可以在点击事件 函数中直接使用  this.$store.commit('increment')  
+2.(1)mutations: mutation 必须同步执行 可以在点击事件 函数中直接使用  this.$store.commit('increment')  
 this.$store.commit('increment') 代表  increment(state,index) 函数
-this.$store.getters.getTodoById(xxx)   xxx 代表穿的参数
+(2)getters: this.$store.getters.getTodoById(xxx)   xxx 代表穿的参数
+(3)actions: actions 可以内部执行异步操作 this.$store.dispatch('incrementAsync') 触发 incrementAsync 函数
+Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象，因此你可以调用 context.commit 提交一个 mutation，
+或者通过 context.state 和 context.getters 来获取 state 和 getters。
+需要调用 commit 很多次的时候 可以用{ commit } 
 
+在需要获取数据的页面使用 this.$store.state   console.log(this.$store.state)
 
 注释： vuex increment函数的使用
 
@@ -61,4 +94,3 @@ this.$store.getters.getTodoById(xxx)   xxx 代表穿的参数
         }
     }
 
-在需要获取数据的页面使用 this.$store.state   console.log(this.$store.state)
