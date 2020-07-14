@@ -1,0 +1,65 @@
+由于使用单一状态树，应用的所有状态会集中到一个比较大的对象。当应用变得非常复杂时，store 对象就有可能变得相当臃肿。
+为了解决以上问题，Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块——从上至下进行同样方式的分割：
+
+const moduleA = {
+    state: () => ({
+        count: 111
+    }),
+    mutations: {
+        incrementA (state) {
+            // 这里的 `state` 对象是模块的局部状态
+            state.count++
+        }
+    },
+    getters: {
+        doubleCountA (state) {
+            return state.count * 2
+        }
+    },
+    actions: {
+        incrementIfOddOnRootSum1 ({ state, commit, rootState }) {
+
+        }
+    }
+}
+
+const moduleB = {
+    state: () => ({
+        count: 222
+    }),
+    mutations: {
+        incrementB (state) {
+            // 这里的 `state` 对象是模块的局部状态
+            state.count++
+        }
+    },
+    getters: {
+        doubleCountB (state) {
+            return state.count * 2
+        }
+    },
+    actions: {
+        incrementIfOddOnRootSum2 ({ state, commit, rootState }) {
+            console.log(state)                  // 打印出 {count:222}  
+            commit('incrementB')                // 调用 mutations中  increment 函数   
+            console.log(rootState)              // a:{count:111} b:{count:223}    注释 执行了mutations中  increment 函数
+        }
+    }
+}
+
+const store = new Vuex.Store({
+    modules: {
+        a: moduleA,
+        b: moduleB
+    }
+});
+
+在页面里 调用 
+mounted(){
+    console.log(this.$store)                    
+    console.log(this.$store.getters)                    // 打印出 a:{count:111} b:{count:222}
+    console.log(this.$store.getters.doubleCountA)       // 打印出 222   
+    console.log(this.$store.getters.doubleCountB)       // 打印出 444   
+    console.log(this.$store.dispatch('incrementIfOddOnRootSum2'))
+}
+
