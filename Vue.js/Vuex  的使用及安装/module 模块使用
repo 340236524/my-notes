@@ -41,8 +41,9 @@ const moduleB = {
     actions: {
         incrementIfOddOnRootSum2 ({ state, commit, rootState }) {
             console.log(state)                  // 打印出 {count:222}  
-            commit('incrementB')                // 调用 mutations中  increment 函数   
-            console.log(rootState)              // a:{count:111} b:{count:223}    注释 执行了mutations中  increment 函数
+            commit('incrementA')                // 调用 mutations中  incrementA 函数   
+            commit('incrementB')                // 调用 mutations中  incrementB 函数   
+            console.log(rootState)              // a:{count:112} b:{count:223}    注释 执行了mutations中  incrementA和incrementB 函数
         }
     }
 }
@@ -63,3 +64,19 @@ mounted(){
     console.log(this.$store.dispatch('incrementIfOddOnRootSum2'))
 }
 
+
+incrementIfOddOnRootSum2 (context) {
+    console.log(context)
+}
+
+context包含以下属性
+
+commit: ƒ boundCommit(type, payload, options)
+dispatch: ƒ boundDispatch(type, payload)
+getters: {}
+rootGetters: {}
+rootState: {__ob__: Observer}
+state: {__ob__: Observer}
+__proto__: Object
+
+{ state, commit, rootState }

@@ -81,7 +81,7 @@ iconfont.css  引入的是 阿里图库 iconfont
 import mIcon from "../../static/iconfont/iconfont.vue";
 声明组件
 components:{
-    mIcon,topTab
+    mIcon
 }
 <mIcon class="search" type="sousuo" size="40" color="#bebebe" @click="onSearch()"></mIcon>      <!--文字图标 -->
 
