@@ -8,9 +8,16 @@
                 increment(state,index) {
                     state.count = index
                 }
+            },
+            getters:{
+                getTodoById: (state) => (id) => {
+                    return state.todos.find(todo => todo.id === id)
+                }
             }
         });
 
+        find 和 filter 的区别    find返回的是对象 {}   filter返回的是数组 []
+        
 1.(2)   const state = { 
             count:'0' /* 这里面写数据内容 */
         };
@@ -20,14 +27,22 @@
                 state.count = index
             }
         }
+        
+        const getters = {
+            getTodoById: (state) => (id) => {
+                return state.todos.find(todo => todo.id === id)
+            }
+        }
 
         const store = new Vuex.Store({
             state,
-            mutations
+            mutations,
+            getters
         });
 
 2. 可以在点击事件 函数中直接使用  this.$store.commit('increment')  
 this.$store.commit('increment') 代表  increment(state,index) 函数
+this.$store.getters.getTodoById(xxx)   xxx 代表穿的参数
 
 
 注释： vuex increment函数的使用
