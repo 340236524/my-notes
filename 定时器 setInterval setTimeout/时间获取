@@ -1,6 +1,0 @@
-现在的时间  new Date()
-var  now = new Data();
-
-获取年  now.getFullYear();
-获取月  now.getMonth();
-获取日  now.getDate();
