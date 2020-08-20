@@ -30,9 +30,9 @@ arr.map((item,index,arr)=>{
 //map遍历数组，返回一个新数组，不改变原数组
 
 3.filter()
-
-var arr = [1,2,3,4];
 ```
+var arr = [1,2,3,4];
+
 arr.filter((item,index,arr)=>{
 
    return item >2; //结果为[3,4]
